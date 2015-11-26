@@ -1,0 +1,1898 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FactualDriver</name>
+    </assembly>
+    <members>
+        <member name="F:FactualDriver.Boost._parameters">
+            <summary>
+            Represents a top level Factual query. Knows how to represent the query as URL
+            encoded key value pairs, ready for the query string in a GET request.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Boost.#ctor(System.String)">
+            <summary>
+            Constructor for a boost.
+            </summary>
+            <param name="factualId">factualId this boost is performed on.</param>
+        </member>
+        <member name="M:FactualDriver.Boost.#ctor(System.String,FactualDriver.Query,FactualDriver.Metadata)">
+            <summary>
+            Constructor for a boost.
+            </summary>
+            <param name="factualId">factualId this boost is performed on.</param>
+            <param name="query">factualId this boost is performed on.</param>
+            <param name="user">factualId this boost is performed on.</param>
+        </member>
+        <member name="M:FactualDriver.Boost.Search(System.String)">
+            <summary>
+            Sets a full text search for this boost.
+            </summary>
+            <param name="term">the text for which to perform this boost.</param>
+            <returns>this Boost</returns>
+        </member>
+        <member name="M:FactualDriver.Boost.User(System.String)">
+            <summary>
+            Sets a user for this boost.
+            </summary>
+            <param name="user">the user who performs this boost.</param>
+            <returns>this Boost</returns>
+        </member>
+        <member name="M:FactualDriver.Boost.Add(FactualDriver.Filters.IFilter)">
+            <summary>
+            Adds filter to this Boost.
+            </summary>
+            <param name="filter"></param>
+        </member>
+        <member name="M:FactualDriver.Boost.ToUrlQuery">
+            <summary>
+            Converts a path object into a uri path string for communication with
+            Factual's API. Provides proper URL encoding and escaping.
+            </summary>
+            <returns>Returns the path string to represent this Query when talking to Factual's API.</returns>
+        </member>
+        <member name="T:FactualDriver.Clear">
+            <summary>
+            Represents a clear request of existing attributes on a Factual entity.
+            </summary>
+        </member>
+        <member name="F:FactualDriver.Clear._parameters">
+            <summary>
+            Holds all parameters for this Clear.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Clear.#ctor(System.String[])">
+            <summary>
+            Constructor for a clear with fields passed as unknown number of strings.
+            </summary>
+            <param name="fields">fields this clear is initialized with</param>
+        </member>
+        <member name="M:FactualDriver.Clear.AddField(System.String)">
+            <summary>
+            Add a single field for this clear request.
+            </summary>
+            <param name="field">the field name</param>
+            <returns>this Clear</returns>
+        </member>
+        <member name="M:FactualDriver.Clear.ToUrlQuery">
+            <summary>
+            Output clear values to url query
+            </summary>
+            <returns>Url encoded query string parameters</returns>
+        </member>
+        <member name="T:FactualDriver.Constants">
+            <summary>
+            Helper class that keeps all factual related constant strings.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.DiffsQuery">
+            <summary>
+            Represents a Factual Diffs query.
+            </summary>
+        </member>
+        <member name="F:FactualDriver.DiffsQuery._queryParameters">
+            <summary>
+            Holds all parameters for this DiffsQuery.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.DiffsQuery.#ctor">
+            <summary>
+            Constructor. Create a request to find diffs on a Factual table between two times.
+            </summary>
+            <returns>DiffsQuery</returns>
+        </member>
+        <member name="M:FactualDriver.DiffsQuery.#ctor(System.Int64)">
+            <summary>
+            Constructor. Create a request to find diffs on a Factual table between two times.
+            </summary>
+            <param name="after">begin time to create this diff against.</param>
+            <returns>DiffsQuery</returns>
+        </member>
+        <member name="M:FactualDriver.DiffsQuery.After(System.Int64)">
+            <summary>
+            Begin time to create this diff against.
+            </summary>
+            <param name="timestamp">timestamp begin time for this diff.</param>
+            <returns>DiffsQuery</returns>
+        </member>
+        <member name="M:FactualDriver.DiffsQuery.Before(System.Int64)">
+            <summary>
+            End time to create this diff against.
+            </summary>
+            <param name="timestamp">timestamp end time for this diff.</param>
+            <returns>DiffsQuery</returns>
+        </member>
+        <member name="M:FactualDriver.DiffsQuery.AddParam(System.String,System.Object)">
+            <summary>
+            Set a parameter and value pair for specifying url parameters, specifically those not yet available as convenience methods.
+            </summary>
+            <param name="key"> the field name of the parameter to add</param>
+            <param name="value">the field value that will be serialized using value.toString()</param>
+        </member>
+        <member name="M:FactualDriver.DiffsQuery.ToUrlQuery">
+            <summary>
+            Converts DiffQuery object into url encoded string
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="T:FactualDriver.FacetQuery">
+            <summary>
+            Represents a top level Factual facet query. Knows how to represent the facet
+            query as URL encoded key value pairs, ready for the query string in a GET
+            request.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.IQuery">
+            <summary>
+            Base interface for query
+            </summary>
+        </member>
+        <member name="M:FactualDriver.IQuery.Add(FactualDriver.Filters.IFilter)">
+            <summary>
+            Add filter to the query
+            </summary>
+            <param name="filter">Filter to add</param>
+        </member>
+        <member name="M:FactualDriver.IQuery.ToUrlQuery">
+            <summary>
+            Convert query to url encoded path and query that works with Factual
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.#ctor(System.String[])">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="fields">fields for which facets will be generated</param>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.Select(System.String[])">
+            <summary>
+            The fields for which facets should be generated. The response will not be ordered identically to this list, nor will it reflect any nested relationships between fields.
+            </summary>
+            <param name="fields">fields the fields for which facets should be generated. The response will not be ordered identically to this list, nor will it reflect any nested relationships between fields.</param>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.Select(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            The fields for which facets should be generated. The response will not be ordered identically to this list, nor will it reflect any nested relationships between fields.
+            </summary>
+            <param name="fields">fields the fields for which facets should be generated. The response will not be ordered identically to this list, nor will it reflect any nested relationships between fields.</param>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.Search(System.String)">
+            <summary>
+            Sets a full text search query. Factual will use this value to perform a
+            full text search against various attributes of the underlying table, such
+            as entity name, address, etc.
+            </summary>
+            <param name="term">the text for which to perform a full text search.</param>
+            <returns>FacetQuery</returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.Add(FactualDriver.Filters.IFilter)">
+            <summary>
+            Add query to this filter.
+            </summary>
+            <param name="filter"></param>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.ToUrlQuery">
+            <summary>
+            Convert this Query object to url encoded query string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.Field(System.String)">
+            <summary>
+            Begins construction of a new row filter for this FacetQuery
+            </summary>
+            <param name="field">the name of the field on which to filter.</param>
+            <returns>A partial representation of the new row filter.</returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.Within(FactualDriver.Filters.Circle)">
+            <summary>
+            Adds a filter so that results can only be (roughly) within the specified
+            geographic circle.
+            </summary>
+            <param name="circle">The circle within which to bound the results.</param>
+            <returns>FacetQuery</returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.And(FactualDriver.FacetQuery[])">
+            <summary>
+            Used to nest AND'ed predicates.
+            </summary>
+            <param name="queries"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.And(System.Collections.Generic.IEnumerable{FactualDriver.FacetQuery})">
+            <summary>
+            Used to nest AND'ed predicates.
+            </summary>
+            <param name="queries"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.Or(FactualDriver.FacetQuery[])">
+            <summary>
+            Used to nest OR'ed predicates.
+            </summary>
+            <param name="queries"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.Or(System.Collections.Generic.IEnumerable{FactualDriver.FacetQuery})">
+            <summary>
+            Used to nest OR'ed predicates.
+            </summary>
+            <param name="queries"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.IncludeRowCount">
+            <summary>
+            The response will include a count of the total number of rows in the
+            table that conform to the request based on included filters. This will
+            increase the time required to return a response. The default behavior is
+            to NOT include a row count
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.IncludeRowCount(System.Boolean)">
+            <summary>
+            When true, the response will include a count of the total number of rows
+            in the table that conform to the request based on included filters.
+            Requesting the row count will increase the time required to return a
+            response. The default behavior is to NOT include a row count.
+            </summary>
+            <param name="includeRowCount">
+            true if you want the results to include a count of the total
+            number of rows in the table that conform to the request based
+            on included filters
+            </param>
+            <returns>FacetQuery</returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.MinCountPerFacetValue(System.Int64)">
+            <summary>
+            For each facet value count, the minimum number of results it must have in order to be returned in the response. Must be zero or greater. The default is 1.
+            </summary>
+            <param name="minCount">minCount for each facet value count, the minimum number of results it must have in order to be returned in the response. Must be zero or greater. The default is 1.</param>
+            <returns>FacetQuery</returns>
+        </member>
+        <member name="M:FactualDriver.FacetQuery.MaxValuesPerFacet(System.Int64)">
+            <summary>
+            The maximum number of unique facet values that can be returned for a single field. Range is 1-250. The default is 25.
+            </summary>
+            <param name="maxValuesPerFacet">maxValuesPerFacet the maximum number of unique facet values that can be returned for a single field. Range is 1-250. The default is 25.</param>
+            <returns>FacetQuery</returns>
+        </member>
+        <member name="T:FactualDriver.Factual">
+            <summary>
+            Main point of entry for the driver. Supports running queries against Factual
+            and inspecting the response. Supports the same levels of authentication
+            supported by Factual's API.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Factual.#ctor(System.String,System.String)">
+            <summary>
+            Create an instance of Factual .NET driver
+            </summary>
+            <param name="oAuthKey">OAuth consumer key</param>
+            <param name="oAuthSecret">Oauth consumer secret key</param>
+        </member>
+        <member name="M:FactualDriver.Factual.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            Create an instance of Factual .NET driver
+            </summary>
+            <param name="oAuthKey">OAuth consumer key</param>
+            <param name="oAuthSecret">Oauth consumer secret key</param>
+            <param name="debug">Include debuggin info</param>
+        </member>
+        <member name="M:FactualDriver.Factual.CreateWebRequest(System.String,System.String)">
+            <summary>
+            Create a new Factual WebRequest for granual control  
+            </summary>
+            <param name="httpMethod">Http method name, GET, POST, etc</param>
+            <param name="query">Relative path string with factual parameters</param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Query(System.String,System.Collections.Generic.IEnumerable{FactualDriver.Filters.IFilter})">
+            <summary>
+            Execute a path against a factual api with Filter Parameters and return a json string
+            </summary>
+            <param name="query">Api address of the request</param>
+            <param name="filters">List of parameter filters against the api</param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Query(System.String,FactualDriver.Filters.IFilter[])">
+            <summary>
+            Execute a path against a factual api with Filter Parameters and return a json string
+            </summary>
+            <param name="query">Api address of the request</param>
+            <param name="filters">List of parameter filters against the api</param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Match(System.String,FactualDriver.MatchQuery)">
+            <summary>
+            Ask Factual to match the entity for the attributes specified by MatchQuery
+            </summary>
+            <param name="tableName"></param>
+            <param name="query"></param>
+            <returns>the response of running a match query against Factual.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Fetch(System.String,FactualDriver.Query)">
+            <summary>
+            Runs a read query against the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to query (e.g., "places")</param>
+            <param name="query">the read query to run against table.</param>
+            <returns>the response of running query against Factual.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Fetch(System.String,FactualDriver.ResolveQuery)">
+            <summary>
+            Asks Factual to resolve the entity for the attributes specified by
+            query, within the table called tableName.
+            Returns the read response from a Factual Resolve request, which includes
+            all records that are potential matches.
+            Each result record will include a confidence score ("similarity"),
+            and a flag indicating whether Factual decided the entity is the correct
+            resolved match with a high degree of accuracy ("resolved").
+            There will be 0 or 1 entities returned with "resolved"=true. If there was a
+            full match, it is guaranteed to be the first record in the response.
+            </summary>
+            <param name="tableName">the name of the table to resolve within.</param>
+            <param name="query">a Resolve query with partial attributes for an entity.</param>
+            <returns>the response from Factual for the Resolve request.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Fetch(System.String,FactualDriver.FacetQuery)">
+            <summary>
+            Runs a facet read against the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to query for facets (e.g., "places")</param>
+            <param name="query">the facet query to run against table</param>
+            <returns>the response of running facet against Factual.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Fetch(System.String,FactualDriver.DiffsQuery)">
+            <summary>
+            Runs a diff query against the specified Factual table.
+            </summary>
+            <param name="tableName"></param>
+            <param name="diff"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FetchRow(System.String,System.String,FactualDriver.RowQuery)">
+            <summary>
+            Runs a row query against the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to query (e.g., "places")</param>
+            <param name="factualId">the factual id (e.g., "03c26917-5d66-4de9-96bc-b13066173c65")</param>
+            <param name="query">the row query to run against table.</param>
+            <returns>the response of running query against Factual.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FetchRow(System.String,System.String)">
+            <summary>
+            Runs a row query against the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to query (e.g., "places")</param>
+            <param name="factualId">the factual id (e.g., "03c26917-5d66-4de9-96bc-b13066173c65")</param>
+            <returns>the response of running query against Factual.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Submit(System.String,FactualDriver.Submit,FactualDriver.Metadata)">
+            <summary>
+            Runs a Submit input against the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to submit updates for (e.g., "places")</param>
+            <param name="submit">the submit parameters to run against table</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response of running submit against Factual.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Submit(System.String,System.String,FactualDriver.Submit,FactualDriver.Metadata)">
+            <summary>
+            Runs a Submit input against the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to submit updates for (e.g., "places")</param>
+            <param name="factualId">the factual id on which the submit is run</param>
+            <param name="submit">the submit parameters to run against table</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response of running submit against Factual.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Clear(System.String,System.String,FactualDriver.Clear,FactualDriver.Metadata)">
+            <summary>
+            Runs a clear request of existing attributes on a Factual entity.
+            </summary>
+            <param name="tableName">the name of the table in which to clear attributes for an entity (e.g., "places")</param>
+            <param name="factualId">the factual id on which the clear is run</param>
+            <param name="clear">the clear parameters to run against entity</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response of running clear request on a Factual entity.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Boost(System.String,System.String)">
+            <summary>
+            Runs a boost post request of existing attributes on a Factual entity.
+            </summary>
+            <param name="tableName">the name of the table in which to boost attributes for an entity (e.g., "places").</param>
+            <param name="factualId">the factual id on which the boost is run.</param>
+            <returns>the response of running boost post request on a Factual entity.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Boost(System.String,System.String,System.String)">
+            <summary>
+            Runs a boost post request of existing attributes on a Factual entity.
+            </summary>
+            <param name="tableName">the name of the table in which to boost attributes for an entity (e.g., "places").</param>
+            <param name="factualId">the factual id on which the boost is run.</param>
+            <param name="search">the full text search string on which the boost is run.</param>
+            <returns>the response of running boost post request on a Factual entity.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Boost(System.String,System.String,System.String,System.String)">
+            <summary>
+            Runs a boost post request of existing attributes on a Factual entity.
+            </summary>
+            <param name="tableName">the name of the table in which to boost attributes for an entity (e.g., "places").</param>
+            <param name="factualId">the factual id on which the boost is run.</param>
+            <param name="search">the full text search string on which the boost is run.</param>
+            <param name="user">the user which executes the boost.</param>
+            <returns>the response of running boost post request on a Factual entity.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Boost(System.String,System.String,FactualDriver.Query,FactualDriver.Metadata)">
+            <summary>
+            Runs a boost post request of existing attributes on a Factual entity.
+            </summary>
+            <param name="tableName">the name of the table in which to boost attributes for an entity (e.g., "places").</param>
+            <param name="factualId">the factual id on which the boost is run.</param>
+            <param name="query">the row query to run against table.</param>
+            <param name="user">the metadata which executes the boost.</param>
+            <returns>the response of running boost post request on a Factual entity.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Boost(System.String,FactualDriver.Boost)">
+            <summary>
+            Runs a boost post request of existing attributes on a Factual entity.
+            </summary>
+            <param name="tableName">the name of the table in which to boost attributes for an entity (e.g., "places").</param>
+            <param name="boost">the boost to perform on a Factual entity.</param>
+            <returns>the response of running boost post request on a Factual entity.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.Schema(System.String)">
+            <summary>
+            Run a schema query against the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to query (e.g., "places")</param>
+            <returns>the response of running query against Factual.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.ReverseGeocode(FactualDriver.Filters.Point)">
+            <summary>
+            Run a Geocode query against the Factual API.
+            <para name="Example"> This example shows common usage: </para>
+            <c>new Point(34.06021, -118.41828)</c>
+            </summary>
+            <param name="point">Point to get geocode</param>
+            <returns>the response of running query against Factual.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.QueueFetch(System.String,System.String)">
+            <summary>
+            Queue a raw read request for inclusion in the next multi request.
+            </summary>
+            <param name="path">the path to run the request against</param>
+            <param name="query">the parameters to send with the request</param>
+        </member>
+        <member name="M:FactualDriver.Factual.QueueFetch(System.String,FactualDriver.Query)">
+            <summary>
+            Queue a read request for inclusion in the next multi request.
+            </summary>
+            <param name="table">the name of the table you wish to query (e.g., "places")</param>
+            <param name="query">the read query to run against table.</param>
+        </member>
+        <member name="M:FactualDriver.Factual.QueueFetch(System.String,FactualDriver.ResolveQuery)">
+            <summary>
+            Queue a resolve request for inclusion in the next multi request.
+            </summary>
+            <param name="table">the name of the table you wish to use resolve against (e.g., "places")</param>
+            <param name="query">the resolve query to run against table.</param>
+        </member>
+        <member name="M:FactualDriver.Factual.QueueFetch(System.String,FactualDriver.FacetQuery)">
+            <summary>
+            Queue a facet request for inclusion in the next multi request.
+            </summary>
+            <param name="table">the name of the table you wish to use a facet request against (e.g., "places")</param>
+            <param name="query">the facet query to run against table.</param>
+        </member>
+        <member name="M:FactualDriver.Factual.QueueFetch(FactualDriver.Filters.Point)">
+            <summary>
+            Queue a ReverseGeocode for inclusion in the next multi request.
+            </summary>
+            <param name="point">the geo location point parameter</param>
+        </member>
+        <member name="M:FactualDriver.Factual.SendQueueRequests">
+            <summary>
+            Send all milti query requests which were queued up.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagDuplicate(System.String,System.String,FactualDriver.Metadata)">
+            <summary>
+            Flags a row as a duplicate in the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to flag a duplicate for (e.g., "places")</param>
+            <param name="factualId">the factual id that is the duplicate</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response from flagging a duplicate row.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagDuplicate(System.String,System.String,System.String,FactualDriver.Metadata)">
+            <summary>
+            Flags a row as a duplicate in the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to flag a duplicate for (e.g., "places")</param>
+            <param name="factualId">the factual id that is the duplicate</param>
+            <param name="preferredFactualId">the factual id that is preferred of the two duplicates to persist</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response from flagging a duplicate row.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagRelocated(System.String,System.String,System.String,FactualDriver.Metadata)">
+            <summary>
+            Flags a row as having been relocated, where its new location is an existing record,
+            identified by preferredFactualid. If there is no record corresponding to the relocated
+            business, use the submit API to update the record's address instead.
+            </summary>
+            <param name="tablename">the name of the table you wish to flag a duplicate for (e.g., "places")</param>
+            <param name="factualId">>the factual id that is the relocated</param>
+            <param name="preferredFactualId">the factual id that is preferred.</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagInaccurate(System.String,System.String,FactualDriver.Metadata)">
+            <summary>
+            Flags a row as inaccurate in the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to flag a duplicate for (e.g., "places")</param>
+            <param name="factualId">the factual id that is the duplicate</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response from flagging a duplicate row.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagInaccurate(System.String,System.String,System.Collections.Generic.List{System.String},FactualDriver.Metadata)">
+            <summary>
+            Flags a row as inaccurate in the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to flag a duplicate for (e.g., "places")</param>
+            <param name="factualId">the factual id that is the duplicate</param>
+            <param name="fields">A List of fields(by name) which you know to contain inaccurate data,
+            however for which you don't actually have the proper corrections. If you have actual corrections,
+            please use the submit API to update the row.</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response from flagging a duplicate row.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagInappropriate(System.String,System.String,FactualDriver.Metadata)">
+            <summary>
+            Flags a row as inappropriate in the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to flag a duplicate for (e.g., "places")</param>
+            <param name="factualId">the factual id that is the duplicate</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response from flagging a duplicate row.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagNonExistent(System.String,System.String,FactualDriver.Metadata)">
+            <summary>
+            Flags a row as non-existent in the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to flag a duplicate for (e.g., "places")</param>
+            <param name="factualId">the factual id that is the duplicate</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response from flagging a duplicate row.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagSpam(System.String,System.String,FactualDriver.Metadata)">
+            <summary>
+            Flags a row as spam in the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to flag a duplicate for (e.g., "places")</param>
+            <param name="factualId">the factual id that is the duplicate</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response from flagging a duplicate row.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagClosed(System.String,System.String,FactualDriver.Metadata)">
+            <summary>
+            Flags a row as closed in the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table that contains the item you wish to flag as closed (e.g., "places")</param>
+            <param name="factualId">the factual id of the item you wish to flag as closed</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response from flagging an item as closed.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.FlagOther(System.String,System.String,FactualDriver.Metadata)">
+            <summary>
+            Flags a row as problematic in the specified Factual table.
+            </summary>
+            <param name="tableName">the name of the table you wish to flag a duplicate for (e.g., "places")</param>
+            <param name="factualId">the factual id that is the duplicate</param>
+            <param name="metadata">the metadata to send with information on this request</param>
+            <returns>the response from flagging a duplicate row.</returns>
+        </member>
+        <member name="M:FactualDriver.Factual.RawQuery(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Runs a GET request against the specified endpoint path, using the given
+            parameters and your OAuth credentials. Returns the raw response body
+            returned by Factual.
+            The necessary URL base will be automatically prepended to path. If
+            you need to change it, e.g. to make requests against a development instance of
+            the Factual service, please set FactualApiUrlOverride property.
+            </summary>
+            <param name="path">The endpoint path to run the request against. Example: "t/places"</param>
+            <param name="queryParameters">The query string parameters to send with the request. Do not encode
+            or escape these; that will be done automatically</param>
+            <returns>The response body from running the GET request against Factual</returns>
+            <exception cref="T:FactualDriver.Exceptions.FactualApiException">If something goes wrong</exception>
+        </member>
+        <member name="M:FactualDriver.Factual.RawQuery(System.String,System.String)">
+            <summary>
+            Runs a GET request against the specified endpoint path, using the given
+            parameters and your OAuth credentials. Returns the raw response body
+            returned by Factual.
+            The necessary URL base will be automatically prepended to path. If
+            you need to change it, e.g. to make requests against a development instance of
+            the Factual service, please set FactualApiUrlOverride property.
+            Developer is entirly responsible for correct query formatting and URL encoding.
+            </summary>
+            <param name="path">The endpoint path to run the request against. Example: "t/places"</param>
+            <param name="queryParameters">The query string parameters to send with the request</param>
+            <returns>The response body from running the GET request against Factual</returns>
+            <exception cref="T:FactualDriver.Exceptions.FactualApiException">If something goes wrong</exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:FactualDriver.Factual.RawQuery(System.String)" -->
+        <member name="M:FactualDriver.Factual.RequestPost(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Runs a POST request against the specified endpoint path, using the given
+            parameters and your OAuth credentials. Returns the raw response body
+            returned by Factual.
+            The necessary URL base will be automatically prepended to path. If
+            you need to change it, e.g. to make requests against a development instance of
+            the Factual service, please set FactualApiUrlOverride property.
+            </summary>
+            <param name="path">The endpoint path to run the request against. Example: "t/places"</param>
+            <param name="queryParameters">The query string parameters to send with the request. Do not encode
+            or escape these; that will be done automatically</param>
+            <param name="postData">The POST content parameters to send with the request. Do not encode
+            or escape these; that will be done automatically</param>
+            <returns>The response body from running the POST request against Factual</returns>
+            <exception cref="T:FactualDriver.Exceptions.FactualApiException">If something goes wrong</exception>
+        </member>
+        <member name="M:FactualDriver.Factual.RequestPost(System.String,System.String,System.String)">
+            <summary>
+            Runs a POST request against the specified endpoint path, using the given
+            parameters and your OAuth credentials. Returns the raw response body
+            returned by Factual.
+            The necessary URL base will be automatically prepended to path. If
+            you need to change it, e.g. to make requests against a development instance of
+            the Factual service, please set FactualApiUrlOverride property.
+            Developer is entirly responsible for correct query formatting and URL encoding.
+            </summary>
+            <param name="path">The endpoint path to run the request against. Example: "t/places"</param>
+            <param name="queryParameters">The query string parameters to send with the request</param>
+            <param name="postData">The POST content parameters to send with the request</param>
+            <returns>The response body from running the POST request against Factual</returns>
+            <exception cref="T:FactualDriver.Exceptions.FactualApiException">If something goes wrong</exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:FactualDriver.Factual.RequestPost(System.String,System.String)" -->
+        <member name="P:FactualDriver.Factual.MultiQuery">
+            <summary>
+            MultiQuery accessor. Creates and returns new instance of MultiQuery if one already doesn't exists.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Factual.Debug">
+            <summary>
+            Set the driver in or out of debug mode. True to display in the output window.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Exceptions.FactualApiException">
+            <summary>
+            Factaul api exception class, represent an error received from the Factual API.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Exceptions.FactualApiException.#ctor(System.Net.HttpStatusCode,System.String,System.String)">
+            <summary>
+            Constructor for exception.
+            </summary>
+            <param name="statusCode">HttpStatusCode</param>
+            <param name="response">Factual response string received from API.</param>
+            <param name="url">Url requested from Factual which caused an error.</param>
+        </member>
+        <member name="P:FactualDriver.Exceptions.FactualApiException.StatusCode">
+            <summary>
+            Status code of the http response from Factual API.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Exceptions.FactualApiException.Response">
+            <summary>
+            Text response that was received with an error.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Exceptions.FactualApiException.Url">
+            <summary>
+            Url which was requested from Factual API, for troubleshooting purposes.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Exceptions.FactualException">
+            <summary>
+            A generic Factual exception class
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Exceptions.FactualException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:FactualDriver.Filters.Circle">
+            <summary>
+            Represents a geographic sub query confining results to a circle.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Filters.Circle.#ctor(System.Double,System.Double,System.Int32)">
+            <summary>
+            Constructs a geographic Circle representation.
+            </summary>
+            <param name="centerLat">the latitude of the center of this Circle.</param>
+            <param name="centerLong">the longitude of the center of this Circle.</param>
+            <param name="meters">the radius, in meters, of this Circle.</param>
+        </member>
+        <member name="M:FactualDriver.Filters.Circle.GetFilter">
+            <summary>
+            Get filter created from circle
+            </summary>
+            <returns>Returns IFilter object</returns>
+        </member>
+        <member name="T:FactualDriver.Filters.FilterGroup">
+            <summary>
+            Class represents a collection of row filters grouped by conditional operators.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Filters.IFilter">
+            <summary>
+            Filter inferface.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.IFilter.Name">
+            <summary>
+            Name or key of the filter is required.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Filters.FilterGroup.#ctor(System.Collections.Generic.List{FactualDriver.Filters.IFilter},System.String)">
+            <summary>
+            Creates a set of filters grouped by condition
+            </summary>
+            <param name="conditionalOperator">Condition operator performed on the group</param>
+            <param name="filters">Collection of filter on which the operator is performed</param>
+        </member>
+        <member name="M:FactualDriver.Filters.FilterGroup.#ctor(System.String)">
+            <summary>
+            Creates an empty Filters group with specified conditional operator.
+            </summary>
+            <param name="conditionalOperator">Operator</param>
+        </member>
+        <member name="P:FactualDriver.Filters.FilterGroup.Name">
+            <summary>
+            Key of the filter. Defaults to the correct Factual Filters keys.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.FilterGroup.Operator">
+            <summary>
+            Filter conditional operator.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.FilterGroup.RowFilters">
+            <summary>
+            A collection of row filters under FilterGroup.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Filters.FilterList">
+            <summary>
+            FilterList is a helper filter that has a list of filters, if there is only one filter it
+            will get serialized as a value and not an array. And if there are multiple filters
+            it will get serialized as a filter group array with $and operator.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Filters.FilterList.#ctor">
+            <summary>
+            Parameterless constructor which creates an empty array of filters.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.FilterList.Name">
+            <summary>
+            Key of the filter.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.FilterList.Data">
+            <summary>
+            List of filters
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Filters.KeyValueFilter">
+            <summary>
+            A generic filter which serialises results into json key value pairs
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.KeyValueFilter.Name">
+            <summary>
+            Filter key.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Filters.Point">
+            <summary>
+            Point filter class, used to serilize geo point data for GeoFilters. 
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Filters.Point.#ctor(System.Double,System.Double)">
+            <summary>
+            Constructs a geographic PointKey representation.
+            </summary>
+            <param name="latitude">the latitude of the point.</param>
+            <param name="longitude">the longitude of the point.</param>
+        </member>
+        <member name="M:FactualDriver.Filters.Point.ToUrlQuery">
+            <summary>
+            Converts point into uri encoded query.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:FactualDriver.Filters.Point.Latitude">
+            <summary>
+            Point's latitude.
+            </summary>
+            
+        </member>
+        <member name="P:FactualDriver.Filters.Point.Longitude">
+            <summary>
+            Point's longitude.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.Point.PointKey">
+            <summary>
+            Point key name, defaults to $point.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Filters.Rectangle">
+            <summary>
+            Rectangle filter class, used to serilize geo envelope data for GeoFilters.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Filters.Rectangle.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructs a geographic Rectangle representation.
+            </summary>
+            <param name="topLeftLat">Rectangle's top left latitude.</param>
+            <param name="topLeftLong">Rectangle's top left longitude.</param>
+            <param name="bottomRightLat">Rectangle's bottom right latitude.</param>
+            <param name="bottomRightLong">Rectangle's bottom right longitude.</param>
+        </member>
+        <member name="P:FactualDriver.Filters.Rectangle.TopLeftLatitude">
+            <summary>
+            Rectangle's top left latitude.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.Rectangle.TopLeftLLongitude">
+            <summary>
+            Rectangle's top left longitude.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.Rectangle.BottonRightLatitude">
+            <summary>
+            Rectangle's bottom right latitude.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.Rectangle.BottonRightLongitude">
+            <summary>
+            Rectangle's bottom right longitude.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.Rectangle.RectKey">
+            <summary>
+            Rect key name, defaults to $rect.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.JsonConverters.FilterGroupConverter">
+            <summary>
+            Converts FilterGroup to json.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Filters.Filter">
+            <summary>
+            A generic filter which gets serialized into key=value.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Filters.Filter.#ctor(System.String,System.Object)">
+            <summary>
+            Create an instance of a generic filter with key and value
+            </summary>
+            <param name="name">Name or key of the filter</param>
+            <param name="value">Value of the filter</param>
+        </member>
+        <member name="P:FactualDriver.Filters.Filter.Name">
+            <summary>
+            Filter key.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.Filter.Value">
+            <summary>
+            Filter value.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Filters.GeoFilter">
+            <summary>
+            GeoFilter class.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Filters.GeoFilter.#ctor(System.Double,System.Double,System.Int32)">
+            <summary>
+            GEO filter which sets geographical condiitons on the factual api call
+            </summary>
+            <param name="latitude">Latitude of the starting point</param>
+            <param name="longitude">Longitude of the starting point</param>
+            <param name="distance">Radius distance from the starting point</param>
+        </member>
+        <member name="P:FactualDriver.Filters.GeoFilter.Shape">
+            <summary>
+            Shape key, defaults to circle.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.GeoFilter.Target">
+            <summary>
+            Target key, default to center.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.GeoFilter.DistanceUnits">
+            <summary>
+            Distance units, default is meters.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.GeoFilter.Latitude">
+            <summary>
+            Latitude of the filter.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.GeoFilter.Longitude">
+            <summary>
+            Longitutde of the filter. 
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.GeoFilter.Distance">
+            <summary>
+            Distance of the filter.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.GeoFilter.Name">
+            <summary>
+            Filter key, defaults to geo.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.JsonConverters.FilterConverter">
+            <summary>
+            Converts Filter to json.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.JsonConverters.FilterListConverter">
+            <summary>
+            Converts FilterList to json.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.JsonConverters.GeoFilterConverter">
+            <summary>
+            Converts GeoFilter to json.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Filters.RowFilter">
+            <summary>
+            Row filter class for limiting result sets based on individual filter operators. 
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Filters.RowFilter.#ctor(System.String,System.Object)">
+            <summary>
+            Short hand version of the row filter which will not set operator
+            </summary>
+            <param name="fieldName">Field name on which filter is performed</param>
+            <param name="compareToValue">Filter value</param>
+        </member>
+        <member name="M:FactualDriver.Filters.RowFilter.#ctor(System.String,System.String,System.Object)">
+            <summary>
+            Row filter wrapper which will get serialized into proper json object filter when calling factual api
+            </summary>
+            <param name="fieldName">Field name on which this filter is performed</param>
+            <param name="compareOperator">Comparison operator key</param>
+            <param name="compareValue">Value</param>
+        </member>
+        <member name="P:FactualDriver.Filters.RowFilter.FieldName">
+            <summary>
+            Name of the field upon which we are going to perform a comparison.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.RowFilter.Operator">
+            <summary>
+            Operator which specifies comparison type.
+            </summary>
+        </member>
+        <member name="P:FactualDriver.Filters.RowFilter.Value">
+            <summary>
+            Value of the filter name to which operator applies.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.JsonConverters.KeyValueFilterConverter">
+            <summary>
+            Converts Key Value Filter to JSON.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.JsonConverters.PointConverter">
+            <summary>
+            Converts Point to json.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.JsonConverters.RowFilterConverter">
+            <summary>
+            Converts RowFilter to json.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.Filters.SearchFilter">
+            <summary>
+            Simple search filters for full text search on Factual API which gets serialized into q=search term.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Filters.SearchFilter.#ctor(System.String)">
+            <summary>
+            Search filter to do a full-text search on factual api
+            </summary>
+            <param name="searchText">Test to search</param>
+        </member>
+        <member name="P:FactualDriver.Filters.SearchFilter.SearchText">
+            <summary>
+            Search text of the query.
+            </summary>
+        </member>
+        <member name="T:FactualDriver.MatchQuery">
+            <summary>
+            Holds all parameters for this MatchQuery.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.MatchQuery.Add(System.String,System.Object)">
+            <summary>
+            Adds key and value to the match query list
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.MatchQuery.ToUrlQuery">
+            <summary>
+            Converts MatchQuery object into url encoded string
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="T:FactualDriver.Metadata">
+            <summary>
+            Represents metadata to be sent with submit and flag requests
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Metadata.#ctor(FactualDriver.Parameters)">
+            <summary>
+            Create metadata to associate with submit and flag requests
+            </summary>
+            <param name="queryParameters">Query parameters</param>
+        </member>
+        <member name="M:FactualDriver.Metadata.User(System.String)">
+            <summary>
+            Set a user name for the person submitting the data 
+            </summary>
+            <param name="username">username</param>
+            <returns>new Metadata, with a username set</returns>
+        </member>
+        <member name="M:FactualDriver.Metadata.Debug">
+            <summary>
+            The request will only be a test query and no actual data will be written
+            </summary>
+            <returns>new Metadata, marked as a debug request</returns>
+        </member>
+        <member name="M:FactualDriver.Metadata.Debug(System.Boolean)">
+            <summary>
+            When true, the request will only be a test query and no actual data will be written.
+            The default behavior is to NOT include debug.
+            </summary>
+            <param name="debug">debug true if you want this to be a test query where no actual date is written</param>
+            <returns>new Metadata, marked with whether or not this is a debug request</returns>
+        </member>
+        <member name="M:FactualDriver.Metadata.Comment(System.String)">
+            <summary>
+            Set a comment that will help to explain your corrections
+            </summary>
+            <param name="comment">comment the comment that may help explain your corrections</param>
+            <returns>new Metadata, with a comment set</returns>
+        </member>
+        <member name="M:FactualDriver.Metadata.Reference(System.String)">
+            <summary>
+            Set a reference to a URL, title, person, etc. that is the source of this data
+            </summary>
+            <param name="reference">reference a reference to a URL, title, person, etc. that is the source of this data</param>
+            <returns>new Metadata, with a reference set</returns>
+        </member>
+        <member name="M:FactualDriver.Metadata.ToUrlQuery">
+            <summary>
+            Converts a path object into a uri path string for communication with
+            Factual's API. Provides proper URL encoding and escaping.
+            </summary>
+            <returns>Returns the path string to represent this Query when talking to Factual's API.</returns>
+        </member>
+        <member name="T:FactualDriver.MultiQuery">
+            <summary>
+            Class holder of multiple queries to be sent as one request.
+            </summary>
+        </member>
+        <member name="F:FactualDriver.MultiQuery._queries">
+            <summary>
+            Collection of query keys and full url paths.
+            </summary>
+        </member>
+        <member name="F:FactualDriver.MultiQuery._queryCount">
+            <summary>
+            We start query count at one per driver documentation.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.MultiQuery.AddQuery(System.String,System.String)">
+            <summary>
+            Add a a query to the multiquery collection
+            </summary>
+            <param name="path"></param>
+            <param name="query"></param>
+        </member>
+        <member name="M:FactualDriver.MultiQuery.ToUrlQuery">
+            <summary>
+            Converts multi query into a url encoded string.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FactualDriver.OAuth.OAuth2LeggedAuthenticator">
+            <summary>
+            Factual two legged oauth authenticator class
+            oAuth signing. 
+            </summary>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuth2LeggedAuthenticator.#ctor(System.String,System.String)">
+            <summary>
+            Authenticator constructor.
+            </summary>
+            <param name="consumerKey">oAuth consumer key.</param>
+            <param name="consumerSecret">oAuth consumer secret key.</param>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuth2LeggedAuthenticator.ApplyAuthenticationToRequest(System.Net.HttpWebRequest)">
+            <summary>
+            Adds authentication headers to the HttpWebRequest
+            </summary>
+            <param name="request">HttpWebRequest to add authentication headers.</param>
+        </member>
+        <member name="T:FactualDriver.OAuth.OAuthBase">
+            <summary>
+            The original OAuth code from http://eran.sandler.co.il/, hosted at http://oauth.net
+            Modified only to change namespace.
+            Written by Eran Sandler (http://eran.sandler.co.il)
+            Edited by Claudio Cherubino and Alain Vongsouvanh
+            Further editited by Sergey Maskalik
+            </summary>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.ComputeHash(System.Security.Cryptography.HashAlgorithm,System.String)">
+            <summary>
+            Helper function to compute a hash value
+            </summary>
+            <param name="hashAlgorithm">The hashing algorithm used. If that algorithm needs some initialization,
+            like HMAC and its derivatives, they should be initialized prior to passing it to this function</param>
+            <param name="data">The data to hash</param>
+            <returns>a Base64 string of the hash value</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.GetQueryParameters(System.String)">
+            <summary>
+            Overloaded version of GetQueryParameters to work without a IDictionary parameter
+            </summary>
+            <param name="querystring">The query string part of the Url</param>
+            <returns>A sorted dictionary with string keys and values representing the query parameters</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.GetQueryParameters(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Internal function to parse query string parameters and merge them with an existing dictionary
+            </summary>
+            <param name="querystring">The query string part of the Url</param>
+            <param name="dict">The dictionary to be merged with the query string parameters</param>
+            <returns>A sorted dictionary with string keys and values representing the query parameters merged with
+            the values taken from the dictionary passed as parameter</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.EncodingPerRFC3986(System.String)">
+            <summary>
+            All parameter names and values are escaped using the [RFC3986]
+            percent-encoding (%xx) mechanism. Characters not in the unreserved character
+            MUST be encoded. Characters in the unreserved character set MUST NOT be encoded.
+            Hexadecimal characters in encodings MUST be upper case. Text names and values MUST be
+            encoded as UTF-8 octets before percent-encoding them per [RFC3629]
+            </summary>
+            <param name="value">The value to Url encode</param>
+            <returns>Returns a Url encoded string</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.NormalizeRequestParameters(System.Collections.Generic.SortedDictionary{System.String,System.String})">
+            <summary>
+            Normalizes the request parameters according to the spec for the signature generation.
+            </summary>
+            <param name="parameters">The sorted dictionary containing parameters</param>
+            <returns>a string representing the normalized parameters</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.GenerateSignatureBase(System.Uri,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Generate the signature base that is used to produce the signature
+            </summary>
+            <param name="url">The full url that needs to be signed including its non OAuth url parameters</param>
+            <param name="consumerKey">The consumer key</param>
+            <param name="token">The token, if available. If not available pass null or an empty string</param>
+            <param name="tokenSecret">The token secret, if available. If not available pass null or an empty string</param>
+            <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
+            <param name="timeStamp">The OAuth timestamp. Must be a valid timestamp and equal or greater than
+            timestamps used in previous requests</param>
+            <param name="nonce">The OAuth nonce. A random string uniquely generated for each request</param>
+            <param name="signatureType">The signature type.</param>
+            <returns>The signature base</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.GenerateSignatureBase(System.Uri,System.String,FactualDriver.OAuth.OAuthParameters)">
+            <summary>
+            Generate the signature base that is used to produce the signature
+            </summary>
+            <param name="url">The full url that needs to be signed including its non OAuth url parameters</param>
+            <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
+            <param name="parameters">The OAuth parameters</param>
+            <returns>The signature base</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.GenerateSignatureUsingHash(System.String,System.Security.Cryptography.HashAlgorithm)">
+            <summary>
+            Generate the signature value based on the given signature base and hash algorithm
+            </summary>
+            <param name="signatureBase">The signature based as produced by the GenerateSignatureBase method or by any other means</param>
+            <param name="hash">The hash algorithm used to perform the hashing. If the hashing algorithm requires initialization or a key it should be set prior to calling this method</param>
+            <returns>A base64 string of the hash value</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.GenerateSignature(System.Uri,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Generates a signature using the HMAC-SHA1 algorithm
+            </summary>
+            <param name="url">The full url that needs to be signed including its non OAuth url parameters</param>
+            <param name="consumerKey">The consumer key</param>
+            <param name="consumerSecret">The consumer seceret</param>
+            <param name="token">The token, if available. If not available pass null or an empty string</param>
+            <param name="tokenSecret">The token secret, if available. If not available pass null or an empty string</param>
+            <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
+            <param name="timeStamp">The OAuth timestamp. Must be a valid timestamp and equal or greater than
+            timestamps used in previous requests</param>
+            <param name="nonce">The OAuth nonce. A random string uniquely generated for each request</param>
+            <returns>A base64 string of the hash value</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.GenerateSignature(System.Uri,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Generates a signature using the specified signatureMethod
+            </summary>
+            <param name="url">The full url that needs to be signed including its non OAuth url parameters</param>
+            <param name="consumerKey">The consumer key</param>
+            <param name="consumerSecret">The consumer seceret</param>
+            <param name="token">The token, if available. If not available pass null or an empty string</param>
+            <param name="tokenSecret">The token secret, if available. If not available pass null or an empty string</param>
+            <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
+            <param name="timeStamp">The OAuth timestamp. Must be a valid timestamp and equal or greater than
+            timestamps used in previous requests</param>
+            <param name="nonce">The OAuth nonce. A random string uniquely generated for each request</param>
+            <param name="signatureMethod">The type of signature to use</param>
+            <returns>A base64 string of the hash value</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.GenerateSignature(System.Uri,System.String,FactualDriver.OAuth.OAuthParameters)">
+            <summary>
+            Generates a signature using the specified signatureMethod
+            </summary>
+            <param name="url">The full url that needs to be signed including its non OAuth url parameters</param>
+            <param name="httpMethod">The http method used. Must be a valid HTTP method verb (POST,GET,PUT, etc)</param>
+            <param name="parameters">The OAuth parameters</param>
+            <returns>A base64 string of the hash value</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:FactualDriver.OAuth.OAuthBase.GenerateOAuthSignatureEncoded(System.String,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:FactualDriver.OAuth.OAuthBase.GenerateOAuthSignature(System.String,System.String)" -->
+        <member name="M:FactualDriver.OAuth.OAuthBase.GenerateTimeStamp">
+            <summary>
+            Generate the timestamp for the signature
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthBase.GenerateNonce">
+            <summary>
+            Generate a nonce
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FactualDriver.OAuth.OAuthParameters">
+            <summary>
+            Stores the parameters used to make OAuth requests
+            </summary>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthParameters.addOrUpdate(System.Collections.Generic.IDictionary{System.String,System.String},System.String,System.String)">
+            <summary>
+            Adds a new key-value pair to the dictionary or updates the value if the key is already present
+            </summary>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthParameters.safeGet(System.Collections.Generic.IDictionary{System.String,System.String},System.String)">
+            <summary>
+            Returns the value corresponding to the key in the dictionary or null if the key is not present
+            </summary>
+        </member>
+        <member name="T:FactualDriver.OAuth.OAuthUtil">
+            <summary>
+            Provides a means to generate an OAuth signature.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthUtil.GenerateHeader(System.Uri,System.String,System.String,System.String)">
+            <summary>
+            Generates an OAuth header.
+            </summary>
+            <param name="uri">The URI of the request</param>
+            <param name="consumerKey">The consumer key</param>
+            <param name="consumerSecret">The consumer secret</param>
+            <param name="httpMethod">The http method</param>
+            <returns>The OAuth authorization header</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthUtil.GenerateHeader(System.Uri,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Generates an OAuth header.
+            </summary>
+            <param name="uri">The URI of the request</param>
+            <param name="consumerKey">The consumer key</param>
+            <param name="consumerSecret">The consumer secret</param>
+            <param name="token">The OAuth token</param>
+            <param name="tokenSecret">The OAuth token secret</param>
+            <param name="httpMethod">The http method</param>
+            <returns>The OAuth authorization header</returns>
+        </member>
+        <member name="M:FactualDriver.OAuth.OAuthUtil.GenerateHeader(System.Uri,System.String,FactualDriver.OAuth.OAuthParameters)">
+            <summary>
+            Generates an OAuth header.
+            </summary>
+            <param name="uri">The URI of the request</param>
+            <param name="httpMethod">The http method</param>
+            <param name="parameters">The OAuth parameters</param>
+            <returns>The OAuth authorization header</returns>
+        </member>
+        <member name="T:FactualDriver.Parameters">
+            <summary>
+            A class holder of multiple filters, responsible for logic associated with filters collections.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Parameters.Add(System.String,System.Object)">
+            <summary>
+            Adds filter to collection
+            </summary>
+            <param name="filterName">Name of the filter</param>
+            <param name="value">Filter's value</param>
+        </member>
+        <member name="M:FactualDriver.Parameters.Add(FactualDriver.Filters.IFilter)">
+            <summary>
+            Adds filter to collection
+            </summary>
+            <param name="filter">Filter object</param>
+        </member>
+        <member name="M:FactualDriver.Parameters.AddJsonFilter(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Adds a json filter parameter.
+            </summary>
+            <param name="name">Name of the filter</param>
+            <param name="keyValuePairs">key value pairs to be serialized</param>
+        </member>
+        <member name="M:FactualDriver.Parameters.SetJsonPair(System.String,System.String,System.Object)">
+            <summary>
+            Adds a pair of values to the specified Key Value Filter.
+            </summary> 
+            <param name="filterName">Filter name to add a pair</param>
+            <param name="field">Field or a key in the pair</param>
+            <param name="value">Value of the pair</param>
+        </member>
+        <member name="M:FactualDriver.Parameters.AddCommaSeparatedFilter(System.String,System.String)">
+            <summary>
+            Adds a filter, if filter already exists then it would comma separate values
+            </summary>
+            <param name="filterName">Filter's name</param>
+            <param name="value">value to add or comma separate</param>
+        </member>
+        <member name="M:FactualDriver.Parameters.GetRowFilterList">
+            <summary>
+            Returns only row filters from filter collection.
+            </summary>
+            <returns>Collection of filters</returns>
+        </member>
+        <member name="M:FactualDriver.Parameters.PopRowFiltersIntoNewGroup(System.String,System.Collections.Generic.IEnumerable{FactualDriver.IQuery})">
+            <summary>
+            Groups filters recently added to collection by operation, used with conditional operators.
+            </summary>
+            <param name="operation">Conditional operations</param>
+            <param name="queries">Queries to group</param>
+        </member>
+        <member name="M:FactualDriver.Parameters.ToFilterArray">
+            <summary>
+            Converts collections to filter array.
+            </summary>
+            <returns>IFilter array</returns>
+        </member>
+        <member name="M:FactualDriver.Parameters.ToUrlQuery">
+            <summary>
+            Outputs parameters into url encoded query string.
+            </summary>
+            <returns>Url Encoded Query string</returns>
+        </member>
+        <member name="T:FactualDriver.Query">
+            <summary>
+            Represents a top level Factual query. Knows how to represent the query as URL
+            encoded key value pairs, ready for the query string in a GET request.
+            </summary>
+        </member>
+        <member name="F:FactualDriver.Query._parameters">
+            <summary>
+            Holds all parameters for this query
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Query.Limit(System.Int64)">
+            <summary>
+            Sets the maximum amount of records to return from this Query.
+            </summary>
+            <param name="limit">limit the maximum amount of records to return from this Query.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.Query.Search(System.String)">
+            <summary>
+            Sets a full text search query. Factual will use this value to perform a
+            full text search against various attributes of the underlying table, such
+            as entity name, address, etc.
+            </summary>
+            <param name="term">the text for which to perform a full text search.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.Query.SearchExact(System.String)">
+            <summary>
+            Sets a exact text search query. Factual will use this value to perform a
+            exact text search against various attributes of the underlying table, such
+            as entity name, address, etc.
+            </summary>
+            <param name="term">the text for which to perform a full text search.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.Query.WithIn(FactualDriver.Filters.Circle)">
+            <summary>
+            Adds a filter so that results can only be (roughly) within the specified
+            geographic circle.
+            </summary>
+            <param name="circle">The circle within which to bound the results.</param>
+            <returns>this Query.</returns>
+        </member>
+        <member name="M:FactualDriver.Query.WithIn(FactualDriver.Filters.Rectangle)">
+            <summary>
+            Adds a filter so that results can only be (roughly) within the specified
+            geographic rectangle.
+            </summary>
+            <param name="rect">The rectangle within which to bound the results.</param>
+            <returns>this Query.</returns>
+        </member>
+        <member name="M:FactualDriver.Query.SortAsc(System.String)">
+            <summary>
+            Sets this Query to sort field in ascending order.
+            </summary>
+            <param name="field">the field to sort in ascending order.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.Query.SortDesc(System.String)">
+            <summary>
+            Sets this Query to sort field in descending order.
+            </summary>
+            <param name="field">field to sort in ascending order.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.Query.SortBlendRankAndDistance(System.Int32,System.Int32)">
+            <summary>
+            Sets this Query to perform a blended sort on rank and distance with the specified weights.
+            This will only have an effect if a geo filter is used with this query.
+            </summary>
+            <param name="rankWeight">weight for placerank.</param>
+            <param name="distanceWeight">weight for distance.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.Query.Only(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Sets the fields to select. This is optional; default behaviour is generally
+            to select all fields in the schema.
+            </summary>
+            <param name="fields">the fields to select.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.Query.Only(System.String[])">
+            <summary>
+            Sets the fields to select. This is optional; default behaviour is generally
+            to select all fields in the schema.
+            </summary>
+            <param name="fields">the fields to select.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.Query.Offset(System.Int32)">
+            <summary>
+            Sets how many records in to start getting results (i.e., the page offset)
+            </summary>
+            <param name="offset">for this Query.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.Query.IncludeRowCount">
+            <summary>
+            The response will include a count of the total number of rows in the table
+            that conform to the request based on included filters. This will increase
+            the time required to return a response. The default behavior is to NOT
+            include a row count.
+            </summary>
+            <returns>this Query, marked to return total row count when run.</returns>
+        </member>
+        <member name="M:FactualDriver.Query.IncludeRowCount(System.Boolean)">
+            <summary>
+            When true, the response will include a count of the total number of rows in
+            the table that conform to the request based on included filters.
+            Requesting the row count will increase the time required to return a
+            response. The default behavior is to NOT include a row count.
+            </summary>
+            <param name="includeRowCount">
+            true if you want the results to include a count of the total
+            number of rows in the table that conform to the request based on
+            included filters.
+            </param>
+            <returns>this Query, marked to return total row count when run.</returns>
+        </member>
+        <member name="M:FactualDriver.Query.Threshold(System.String)">
+            <summary>
+             Chooses an existence threshold. For on the latest enumuration of values
+             that can be passed into the threshold value, please see the Read API
+             documentation: http://developer.factual.com/api-docs/#Read, in particular
+             the threshold parameter.
+            </summary>
+            <param name="threshold">See Read API documentation for potential values</param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Query.Field(System.String)">
+            <summary>
+            Begins construction of a new row filter for this Query.
+            </summary>
+            <param name="fieldName">the name of the field on which to filter.</param>
+            <returns>A partial representation of the new row filter.</returns>
+        </member>
+        <member name="M:FactualDriver.Query.ToUrlQuery">
+            <summary>
+            Converts a path object into a uri path string for communication with
+            Factual's API. Provides proper URL encoding and escaping.
+            </summary>
+            <returns>Returns the path string to represent this Query when talking to Factual's API.</returns>
+        </member>
+        <member name="M:FactualDriver.Query.Add(FactualDriver.Filters.IFilter)">
+            <summary>
+            Adds filter to this Query.
+            </summary>
+            <param name="filter"></param>
+        </member>
+        <member name="M:FactualDriver.Query.AddFilter(FactualDriver.Filters.IFilter)">
+            <summary>
+            Adds filter to this Query.
+            </summary>
+            <param name="filter"></param>
+        </member>
+        <member name="M:FactualDriver.Query.And(System.Collections.Generic.IEnumerable{FactualDriver.Query})">
+            <summary>
+            Used to nest AND'ed predicates.
+            </summary>
+            <param name="queries"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Query.And(FactualDriver.Query[])">
+            <summary>
+            Used to nest AND'ed predicates.
+            </summary>
+            <param name="queries"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Query.Or(System.Collections.Generic.IEnumerable{FactualDriver.Query})">
+            <summary>
+            Used to nest OR'ed predicates.
+            </summary>
+            <param name="queries"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.Query.Or(FactualDriver.Query[])">
+            <summary>
+            Used to nest OR'ed predicates.
+            </summary>
+            <param name="queries"></param>
+            <returns></returns>
+        </member>
+        <member name="T:FactualDriver.QueryBuilder`1">
+            <summary>
+            Provides fluent interface to specifying row filter predicate logic.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.#ctor(`0,System.String)">
+            <summary>
+            Constructor. Specifies the name of the field for which to build filter
+            logic. Instance methods are used to specify the desired logic.
+            </summary>
+            <param name="query">IQuery type</param>
+            <param name="fieldName">Field name on which query is being built.</param>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.AddFilter(System.String,System.Object)">
+            <summary>
+            Adds a new Row filter for specified field in the constructor.
+            </summary>
+            <param name="compareOperator">Row filter operator.</param>
+            <param name="compareValue">Row filter value.</param>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.Search(System.Object)">
+            <summary>
+            Adds a generic search filter.
+            </summary>
+            <param name="searchValue">Search value.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.Equal(System.Object)">
+            <summary>
+            Adds a generic equal filter.
+            </summary>
+            <param name="value">Value of the filter.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.NotEqual(System.Object)">
+            <summary>
+            Adds a generic not equal filter.
+            </summary>
+            <param name="value">Not equal value.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.In(System.String[])">
+            <summary>
+            Adds a generic "in" filter
+            </summary>
+            <param name="values">Parameter array of in values.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.In(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a generic "in" filter
+            </summary>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.NotIn(System.String[])">
+            <summary>
+            Adds a generic not equals to any filter.
+            </summary>
+            <param name="values">Parameter array of values.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.NotIn(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a generic not equals to any filter.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.BeginsWith(System.String)">
+            <summary>
+            Adds a generic begins with filter.
+            </summary>
+            <param name="value">Begins with value.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.NotBeginsWith(System.String)">
+            <summary>
+            Adds a generic not begins with filter.
+            </summary>
+            <param name="value">Not begins with value.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.BeginsWithAny(System.String[])">
+            <summary>
+            Adds a generic begins with any filter.
+            </summary>
+            <param name="values">Begins with any value.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.BeginsWithAny(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a generic begins with any filter.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.NotBeginsWithAny(System.String[])">
+            <summary>
+            Adds a generic filter that does not begins with any specified values.
+            </summary>
+            <param name="values">Parameter array of values.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.NotBeginsWithAny(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a generic filter that does not begins with any specified values.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.Blank">
+            <summary>
+            Adds a blank filter.
+            </summary>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.NotBlank">
+            <summary>
+            Adds a not blank filter.
+            </summary>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.GreaterThan(System.Object)">
+            <summary>
+            Adds a greater than filter.
+            </summary>
+            <param name="value">Greater than value.</param>
+            <returns>Generic QueryBuilder</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.GreaterThanOrEqual(System.Object)">
+            <summary>
+            Adds a greater than or equal filter.
+            </summary>
+            <param name="value">Value of the filter.</param>
+            <returns>Generic QueryBuilder.</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.LessThan(System.Object)">
+            <summary>
+            Adds a less than filter.
+            </summary>
+            <param name="value">Value of the filter.</param>
+            <returns>Generic QueryBuilder.</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.LessThanOrEqual(System.Object)">
+            <summary>
+            Adds a less than or equal filter.
+            </summary>
+            <param name="value">Filter value.</param>
+            <returns>Generic QueryBuilder.</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.Includes(System.Object)">
+            <summary>
+            Adds an includes filter.
+            </summary>
+            <param name="value">Value of the filter.</param>
+            <returns>Generic QueryBuilder.</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.IncludesAny(System.Object[])">
+            <summary>
+            Adds an includes any filter.
+            </summary>
+            <param name="values">Values of the filter.</param>
+            <returns>Generic QueryBuilder.</returns>
+        </member>
+        <member name="M:FactualDriver.QueryBuilder`1.IncludesAny(System.Collections.IEnumerable)">
+            <summary>
+            Adds an includes any filter.
+            </summary>
+            <param name="values">Values of the filter.</param>
+        </member>
+        <member name="T:FactualDriver.ResolveQuery">
+            <summary>
+            Holds all parameters for this ResolveQuery.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.ResolveQuery.Add(System.String,System.Object)">
+            <summary>
+            Adds key and value to the resolve query list
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.ResolveQuery.EnableDebugMode(System.Boolean)">
+            <summary>
+            When debug mode is turned on, Resolve will return all potential candidates for resolution
+            and meta-data regarding resolution quality. When debug is turned off (the default), Resolve
+            will return 0 results (meaning no match), or 1 result (meaning that was the unequivocal match).
+            </summary>
+            <param name="enableDebugMode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:FactualDriver.ResolveQuery.ToUrlQuery">
+            <summary>
+            Converts ResolveQuery object into url encoded string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:FactualDriver.RowQuery">
+            <summary>
+            Represents a Factual row query. Knows how to represent the query as URL
+            encoded key value pairs, ready for the query string in a GET request.
+            </summary>
+        </member>
+        <member name="F:FactualDriver.RowQuery._parameters">
+            <summary>
+            Holds all parameters for this query
+            </summary>
+        </member>
+        <member name="M:FactualDriver.RowQuery.Only(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Sets the fields to select. This is optional; default behaviour is generally
+            to select all fields in the schema.
+            </summary>
+            <param name="fields">the fields to select.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.RowQuery.Only(System.String[])">
+            <summary>
+            Sets the fields to select. This is optional; default behaviour is generally
+            to select all fields in the schema.
+            </summary>
+            <param name="fields">the fields to select.</param>
+            <returns>this Query</returns>
+        </member>
+        <member name="M:FactualDriver.RowQuery.ToUrlQuery">
+            <summary>
+            Converts a path object into a uri path string for communication with
+            Factual's API. Provides proper URL encoding and escaping.
+            </summary>
+            <returns>Returns the path string to represent this RowQuery when talking to Factual's API.</returns>
+        </member>
+        <member name="T:FactualDriver.Submit">
+            <summary>
+            Represents an add or update submission to a Factual row.
+            </summary>
+        </member>
+        <member name="F:FactualDriver.Submit._parameters">
+            <summary>
+            Holds all parameters for this Submit.
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Submit.#ctor(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Constructor for a submit with values initialized as key value pairs in mapping.
+            </summary>
+            <param name="values">values this submit is initialized with</param>
+        </member>
+        <member name="M:FactualDriver.Submit.AddValue(System.String,System.Object)">
+            <summary>
+            Set the value for a single field in this submit request.
+            Added to a JSON hash of field names and values to be added to a Factual table.
+            </summary>
+            <param name="field">the field name</param>
+            <param name="value">the value for the specified field</param>
+            <returns>this Submit</returns>
+        </member>
+        <member name="M:FactualDriver.Submit.RemoveValue(System.String)">
+            <summary>
+            Set the value to null for a single field in this submit request.
+            </summary>
+            <param name="field">field the field to set as empty, or null.</param>
+            <returns>this Submit</returns>
+        </member>
+        <member name="M:FactualDriver.Submit.ToUrlQuery">
+            <summary>
+            Output submit values to url query
+            </summary>
+            <returns>Url encoded query string parameters</returns>
+        </member>
+        <member name="T:FactualDriver.Utils.JsonUtil">
+            <summary>
+            Utility which convertes filters to json represenation. 
+            </summary>
+        </member>
+        <member name="M:FactualDriver.Utils.JsonUtil.ToQueryString(System.Collections.Generic.IEnumerable{FactualDriver.Filters.IFilter})">
+            <summary>
+            Converts an array of filters into a uri encoded query string which can be sent to factual api.
+            </summary>
+            <param name="filters">sequence of IFilter objects.</param>
+            <returns>Returns uri encoded query string.</returns>
+        </member>
+        <member name="M:FactualDriver.Utils.JsonUtil.ToQueryString(FactualDriver.Filters.IFilter[])">
+            <summary>
+            Converts an array of filters into a uri encoded query string which can be sent to factual api.
+            </summary>
+            <param name="filters">A parameter array of IFilter objects.</param>
+            <returns>Returns uri encoded query string.</returns>
+        </member>
+    </members>
+</doc>
